@@ -8,12 +8,17 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
-        # If capacity is reached, replace oldest item with new item and shift items over
-        self.current = self.storage.head
-        if self.storage.length < self.capacity:
-            self.storage.add_to_tail(item)
+        # If capacity is reached, replace oldest item with new item
+        if self.storage.length == self.capacity:
+            if self.current.next:
+                self.current.value = item
+                self.current = self.current.next
+            else:
+                self.current.value = item
+                self.current = self.storage.head
         else:
-            pass
+            self.storage.add_to_tail(item)
+            self.current = self.storage.head
 
     def get(self):
         # Note:  This is the only [] allowed
