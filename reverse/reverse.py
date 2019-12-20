@@ -45,11 +45,14 @@ class LinkedList:
 
     def reverse_list(self):
         def reverse_list_inner(node):
+          # If list is empty, return None
             if not self.head:
                 return None
+            # If a next node exists, add current node value to head and call function on next node
             elif node.next_node != None:
                 self.add_to_head(node.value)
                 return reverse_list_inner(node.next_node)
+            # When there is no next node, we are at the tail. Add tail to head
             self.add_to_head(node.value)
 
         reverse_list_inner(self.head)
