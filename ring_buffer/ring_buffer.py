@@ -10,12 +10,18 @@ class RingBuffer:
     def append(self, item):
         # If capacity is reached, replace oldest item with new item
         if self.storage.length == self.capacity:
+
+            # If current item is not tail, set current value to input value
             if self.current.next:
                 self.current.value = item
+                # Set current as next value
                 self.current = self.current.next
+            # If current item is tail, set tail value as input value
             else:
                 self.current.value = item
+                # Set head as current value
                 self.current = self.storage.head
+        # If capacity is not full, add items to tail of list
         else:
             self.storage.add_to_tail(item)
             self.current = self.storage.head
