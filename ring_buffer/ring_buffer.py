@@ -31,9 +31,11 @@ class RingBuffer:
         list_buffer_contents = []
 
         def get_inner(node):
+            # If the input node's next node is not None, append the node's value and call the get_inner function on the next node
             if node.next is not None:
                 list_buffer_contents.append(node.value)
                 return get_inner(node.next)
+            # Else append the final node in the list
             else:
                 list_buffer_contents.append(node.value)
 
