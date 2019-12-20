@@ -44,5 +44,31 @@ class LinkedList:
         return False
 
     def reverse_list(self):
-        # TO BE COMPLETED
-        pass
+        def reverse_list_inner(node):
+            if not self.head:
+                return None
+            elif node.next_node != None:
+                self.add_to_head(node.value)
+                return reverse_list_inner(node.next_node)
+            self.add_to_head(node.value)
+
+        reverse_list_inner(self.head)
+
+
+# ex = LinkedList()
+
+# ex.add_to_head(4)
+# ex.add_to_head(9)
+# ex.add_to_head(2)
+# ex.add_to_head(0)
+# print(ex.head.value)
+# print(ex.head.get_next().value)
+# print(ex.head.get_next().get_next().value)
+# print(ex.head.get_next().get_next().get_next().value)
+
+# ex.reverse_list()
+
+# print(ex.head.value)
+# print(ex.head.get_next().value)
+# print(ex.head.get_next().get_next().value)
+# print(ex.head.get_next().get_next().get_next().value)
