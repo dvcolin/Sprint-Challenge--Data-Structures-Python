@@ -9,12 +9,11 @@ class RingBuffer:
 
     def append(self, item):
         # If capacity is reached, replace oldest item with new item and shift items over
-        if self.storage.length == self.capacity:
-            self.current = self.storage.head
-            self.storage.add_to_head(item)
-            self.storage.head = self.current
-        else:
+        self.current = self.storage.head
+        if self.storage.length < self.capacity:
             self.storage.add_to_tail(item)
+        else:
+            pass
 
     def get(self):
         # Note:  This is the only [] allowed
