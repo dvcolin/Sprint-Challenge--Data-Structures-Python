@@ -48,9 +48,9 @@ class LinkedList:
             return None
         starting_node = self.head
         while starting_node.next_node != None:
-            current_node = starting_node.next_node
-            self.add_to_head(current_node.value)
-            starting_node = starting_node.next_node
+            next_node = starting_node.next_node
+            self.add_to_head(next_node.value)
+            starting_node = next_node
         # def reverse_list_inner(node):
         #     # If list is empty, return None
         #     if not self.head:
