@@ -44,11 +44,15 @@ class LinkedList:
         return False
 
     def reverse_list(self):
-        starting_node = self.head
-
-        while starting_node != None:
-            current_node = starting_node
-            while current_node.get_next() != None:
-                current_node = current_node.get_next()
-            self.add_to_head(current_node.value)
-            starting_node = starting_node.get_next()
+        def reverse_list_inner(node):
+            # If list is empty, return None
+            if not self.head:
+                return None
+            # While there is a next node, add the current node to head and recurse the function
+            else:
+                if node.get_next() != None:
+                    self.add_to_head(node.value)
+                    return reverse_list_inner(node.next_node)
+            # Once we are at the tail, add that node to head
+                self.add_to_head(node.value)
+        return reverse_list_inner(self.head)
